@@ -29,7 +29,6 @@ summary(logisticreg)
 n <- nrow(mydf)
 trainIndex <- sample(1:n, size = n*0.8)
 train <- mydf[trainIndex,]
-test <- mydf[-trainIndex,]
 log.pred <- predict(logisticreg, newdata = train)
 plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'))
 legend('bottomright',c('1','0'), col=c('red','blue'), pch=20)
@@ -49,11 +48,14 @@ legend('bottomright',c('1','0'), col=c('red','blue'), pch=20)
 # (g) Fit a support vector classifier to the data with X1 and X2 as
 # predictors. Obtain a class prediction for each training observation. Plot the observations, colored according to the predicted
 # class labels.
-
+library(e1071)
+svmfit <- svm(y~x1+x2, data = train, kernel = 'linear')
+plot(svmfit, mydf)
 
 # (h) Fit a SVM using a non-linear kernel to the data. Obtain a class
 # prediction for each training observation. Plot the observations,
 # colored according to the predicted class labels.
-
+svmfit <- svm(y~x1+x2, data = train, kernel = 'radial')
+plot(svmfit, mydf)
 
 # (i) Comment on your results
