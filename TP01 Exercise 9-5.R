@@ -43,7 +43,7 @@ log1 <- glm(y~(x1*x2), family=binomial, data=mydf)
 # then repeat (a)-(e) until you come up with an example in which
 # the predicted class labels are obviously non-linear.
 log.pred <- predict(log1, newdata = train)
-plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue')) # TEST
+plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'))
 legend('bottomright',c('1','0'), col=c('red','blue'), pch=20)
 
 # (g) Fit a support vector classifier to the data with X1 and X2 as
