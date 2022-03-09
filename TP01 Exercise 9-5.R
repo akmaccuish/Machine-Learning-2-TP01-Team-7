@@ -11,12 +11,11 @@ x1 <- runif (500) - 0.5
 x2 <- runif (500) - 0.5
 y <- 1 * (x1^2 - x2^2 > 0)
 mydf <- data.frame(x1=x1,x2=x2,y=as.factor(y))
-train
 
 #(b) Plot the observations, colored according to their class labels.
 #    Your plot should display X1 on the x-axis, and X2 on the yaxis.
-plot(x1,x2, col = ifelse(y == 1, 'red', 'blue'))
-legend('topright',c('1','0'), col=c('red','blue'), pch=20)
+plot(x1,x2, col = ifelse(y == 1, 'red', 'blue'), pch = 19)
+legend('topright',c('1','0'), col=c('red','blue'), pch=19)
 
 #(c) Fit a logistic regression model to the data, using X1 and X2 as
 #    predictors.
@@ -30,8 +29,9 @@ n <- nrow(mydf)
 trainIndex <- sample(1:n, size = n*0.8)
 train <- mydf[trainIndex,]
 log.pred <- predict(logisticreg, newdata = train)
-plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'))
-legend('bottomright',c('1','0'), col=c('red','blue'), pch=20)
+plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'), pch=19)
+legend('bottomright',c('1','0'), col=c('red','blue'), pch=19)
+
 
 # (e) Now fit a logistic regression model to the data using non-linear
 #     functions of X1 and X2 as predictors (e.g. X1^2, X1*X2, log(X2), and so forth).
@@ -43,7 +43,7 @@ log1 <- glm(y~(x1*x2), family=binomial, data=mydf)
 # the predicted class labels are obviously non-linear.
 log.pred <- predict(log1, newdata = train)
 plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'))
-legend('bottomright',c('1','0'), col=c('red','blue'), pch=20)
+legend('bottomright',c('1','0'), col=c('red','blue'), pch=19)
 
 # (g) Fit a support vector classifier to the data with X1 and X2 as
 # predictors. Obtain a class prediction for each training observation. Plot the observations, colored according to the predicted
