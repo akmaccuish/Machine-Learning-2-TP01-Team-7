@@ -11,9 +11,11 @@ rm(list=ls())
 #     between them. For instance, you can do this as follows:
 
 set.seed(1)
-x1 <- runif (500) - 0.5
-x2 <- runif (500) - 0.5
+x1 <- runif(500) - 0.5
+summary(x1)
+x2 <- runif(500) - 0.5
 y <- 1 * (x1^2 - x2^2 > 0)
+head(y)
 mydf <- data.frame(x1=x1,x2=x2,y=as.factor(y))
 
 #(b) Plot the observations, colored according to their class labels.
