@@ -7,6 +7,7 @@ rm(list=ls())
 # (a) Generate a data set with n = 500 and p = 2, such that the observations 
 #     belong to two classes with a quadratic decision boundary
 #     between them. For instance, you can do this as follows:
+set.seed(1)
 x1 <- runif (500) - 0.5
 x2 <- runif (500) - 0.5
 y <- 1 * (x1^2 - x2^2 > 0)
