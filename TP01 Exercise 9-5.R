@@ -10,7 +10,6 @@ rm(list=ls())
 #     belong to two classes with a quadratic decision boundary
 #     between them. For instance, you can do this as follows:
 
-set.seed(1)
 x1 <- runif(500) - 0.5
 summary(x1)
 x2 <- runif(500) - 0.5
@@ -54,7 +53,7 @@ log1 <- glm(y~(x1*x2), family=binomial, data=mydf)
 #     the predicted class labels are obviously non-linear.
 
 log.pred <- predict(log1, newdata = train)
-plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'))
+plot(train$x1,train$x2, col = ifelse(log.pred >= 0, 'red', 'blue'), pch = 19)
 legend('bottomright',c('1','0'), col=c('red','blue'), pch=19)
 
 # (g) Fit a support vector classifier to the data with X1 and X2 as
@@ -63,7 +62,7 @@ legend('bottomright',c('1','0'), col=c('red','blue'), pch=19)
 #     class labels.
 
 library(e1071)
-set.seed(1)
+
 svmfit <- svm(y~x1+x2, data = train, kernel = 'linear')
 plot(svmfit, mydf)
 
